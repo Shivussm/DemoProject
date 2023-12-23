@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = "~/Views/Shared/MasterPage.cshtml";
+}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+    <div class="container mt-5 card">
+        <lable class="fw-bold"> All Contact Details </lable>
+        <table class="table table-bordered card-body">
+            <thead class="bg-secondary text-light">
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Message</th>
+                    <th>DateTime</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in ViewBag.contactusdeatil.contactslist)
+                {
+                    <tr>
+                        <td>@row.ID</td>
+                        <td>@row.Name</td>
+                        <td>@row.Email</td>
+                        <td>@row.Subject</td>
+                        <td>@row.Message</td>
+                        <td>@row.DateTime</td>
+                        <td>
+                            <button class="btn btn-danger" onclick="removeRow(this)"><i class="fa fa-trash-o"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+<script>
+    function removeRow(button) {
+        // Get the row containing the clicked button
+        var row = button.closest('tr');
+
+        // Remove the row from the table
+        row.remove();
+
+        // You can also make an AJAX call to update the server/database about the removal if needed.
+    }
+</script>
+
+
